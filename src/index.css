@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+  /* Pagination Dots */
+  .swiper-pagination-bullet-active {
+    @apply bg-green-600 w-6 rounded-full transition-all duration-300 !important;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-50;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-green-200 hover:bg-green-300 rounded-full border-2 border-white;
+  }
+
+  /* Glass Card utility */
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-lg border border-white/50 shadow-xl;
+  }
+}
+
+/* Global Colorful Theme */
+body {
+  /* Subtle mesh gradient background */
+  background:
+    radial-gradient(at 0% 0%, hsla(140, 100%, 93%, 1) 0, transparent 50%),
+    radial-gradient(at 50% 0%, hsla(180, 100%, 92%, 1) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(160, 100%, 95%, 1) 0, transparent 50%);
+  background-attachment: fixed;
+  /* fix gradient during scroll */
+  color: #1f2937;
+  min-height: 100vh;
+}
