@@ -44,7 +44,7 @@ const ProductDetail = () => {
     return (
         <>
             <Helmet>
-                <title>{`${product.name} | SkyTech`}</title>
+                <title>{`${product.name} | Sky Arc Computers`}</title>
                 <meta name="description" content={product.description} />
             </Helmet>
 
@@ -103,9 +103,7 @@ const ProductDetail = () => {
                             {/* Action Buttons */}
                             <div className="flex flex-col sm:flex-row gap-4">
                                 <a
-                                    href={`https://wa.me/966XXXXXXXXX?text=${whatsappMessage}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                    href={`whatsapp://send?phone=966557794892&text=${whatsappMessage}`}
                                     className="flex-1 bg-green-600 hover:bg-green-700 text-white text-lg font-semibold py-4 px-8 rounded-full flex items-center justify-center gap-3 transition-colors shadow-lg shadow-green-600/30"
                                 >
                                     <FaWhatsapp size={24} />

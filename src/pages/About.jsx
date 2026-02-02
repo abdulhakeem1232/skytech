@@ -6,14 +6,14 @@ const About = () => {
     return (
         <>
             <Helmet>
-                <title>About Us | SkyTech</title>
-                <meta name="description" content="Learn more about SkyTech's mission and commitment to quality." />
+                <title>About Us | Sky Arc Computers</title>
+                <meta name="description" content="Learn more about Sky Arc Computers' mission and commitment to quality." />
             </Helmet>
 
             {/* Header Banner */}
             <div className="bg-gray-900 text-white py-20 px-4">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-6">About SkyTech</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold mb-6">About Sky Arc Computers</h1>
                     <p className="text-xl text-gray-300">
                         Simplifying your digital life with premium technology and exceptional service.
                     </p>
@@ -26,7 +26,7 @@ const About = () => {
                     <div>
                         <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
                         <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                            At SkyTech, we believe that premium technology should be accessible to everyone.
+                            At Sky Arc Computers, we believe that premium technology should be accessible to everyone.
                             Our mission is to bridge the gap between innovation and consumers by providing
                             high-quality electronics with a focus on convenience and trust.
                         </p>

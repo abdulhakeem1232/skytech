@@ -17,7 +17,7 @@ const Products = () => {
     return (
         <>
             <Helmet>
-                <title>All Products | SkyTech</title>
+                <title>All Products | Sky Arc Computers</title>
                 <meta name="description" content="Browse our complete catalog of electronics and gadgets." />
             </Helmet>
 
@@ -37,8 +37,8 @@ const Products = () => {
                                 key={category}
                                 onClick={() => setSelectedCategory(category)}
                                 className={`px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 shadow-sm ${selectedCategory === category
-                                        ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg shadow-green-500/30 scale-105'
-                                        : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-green-600 border border-white/50'
+                                    ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg shadow-green-500/30 scale-105'
+                                    : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-green-600 border border-white/50'
                                     }`}
                             >
                                 {category}

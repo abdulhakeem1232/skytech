@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
-import ProductCarousel from '../components/ProductCarousel';
 import ProductCard from '../components/ProductCard';
 import { products } from '../data/products';
 
@@ -11,16 +10,13 @@ const Home = () => {
     // Featured products for carousel (e.g., first 8)
     const featuredProducts = products.slice(0, 8);
 
-    // Latest products for grid (e.g., next 8)
-    const latestProducts = products.slice(8, 16);
-
     return (
         <>
             <Helmet>
-                <title>SkyTech | Premium Electronics Store</title>
-                <meta name="description" content="Discover premium electronics, gadgets, and accessories at SkyTech. Fast delivery and authentic products." />
-                <meta property="og:title" content="SkyTech | Premium Electronics Store" />
-                <meta property="og:description" content="Discover premium electronics, gadgets, and accessories at SkyTech." />
+                <title>Sky Arc Computers | Premium Electronics Store</title>
+                <meta name="description" content="Discover premium electronics, gadgets, and accessories at Sky Arc Computers. Fast delivery and authentic products." />
+                <meta property="og:title" content="Sky Arc Computers | Premium Electronics Store" />
+                <meta property="og:description" content="Discover premium electronics, gadgets, and accessories at Sky Arc Computers." />
             </Helmet>
 
             <main>
@@ -30,21 +26,18 @@ const Home = () => {
                 {/* Services Section */}
                 <Services />
 
-                {/* Featured Products Carousel */}
-                <ProductCarousel title="Featured Collection" products={featuredProducts} />
-
-                {/* Product Grid Section */}
+                {/* Main Product Grid */}
                 <section className="py-16 bg-white">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center mb-12">
-                            <h2 className="text-3xl font-bold text-gray-900 mb-4">Latest Arrivals</h2>
+                            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Collection</h2>
                             <p className="text-gray-500 max-w-2xl mx-auto">
-                                Check out our newest additions to the catalog. Hand-picked quality products just for you.
+                                Explore our premium range of electronics and accessories.
                             </p>
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                            {latestProducts.map((product) => (
+                            {featuredProducts.map((product) => (
                                 <div key={product.id} className="h-full">
                                     <ProductCard product={product} />
                                 </div>
@@ -70,9 +63,7 @@ const Home = () => {
                             Our tech experts are available on WhatsApp to guide you through your purchase.
                         </p>
                         <a
-                            href="https://wa.me/966XXXXXXXXX"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href="whatsapp://send?phone=966557794892"
                             className="inline-block px-8 py-3 bg-white text-green-700 font-bold rounded-full hover:bg-green-50 transition-colors duration-300 shadow-lg"
                         >
                             Chat With Us
