@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { FaWhatsapp, FaArrowLeft, FaCheckCircle, FaStar } from 'react-icons/fa';
@@ -8,6 +8,7 @@ import { products } from '../data/products';
 const ProductDetail = () => {
     const { id } = useParams();
     const navigate = useNavigate();
+    const [activeImage, setActiveImage] = useState('');
 
     const product = products.find(p => p.id === parseInt(id));
 
@@ -16,6 +17,9 @@ const ProductDetail = () => {
         if (!product && id) {
             // Small delay to allow render, but ideally should handle 404
             // navigate('/products'); 
+        }
+        if (product && product.images && product.images.length > 0) {
+            setActiveImage(product.images[0]);
         }
         // Scroll to top on route change
         window.scrollTo(0, 0);
@@ -58,12 +62,31 @@ const ProductDetail = () => {
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
                         {/* Image Section */}
-                        <div className="bg-gray-50 rounded-2xl p-4 flex items-center justify-center aspect-square lg:aspect-auto max-h-[600px] overflow-hidden">
-                            <img
-                                src={product.image}
-                                alt={product.name}
-                                className="w-full h-full object-contain mix-blend-multiply hover:scale-105 transition-transform duration-500"
-                            />
+                        <div className="flex flex-col gap-4">
+                            <div className="bg-gray-50 rounded-2xl p-4 flex items-center justify-center aspect-square lg:aspect-auto max-h-[600px] overflow-hidden">
+                                <img
+                                    src={activeImage || (product?.images && product.images[0])}
+                                    alt={product.name}
+                                    className="w-full h-full object-contain mix-blend-multiply hover:scale-105 transition-transform duration-500"
+                                />
+                            </div>
+                            {product.images && product.images.length > 1 && (
+                                <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+                                    {product.images.map((img, index) => (
+                                        <button
+                                            key={index}
+                                            onClick={() => setActiveImage(img)}
+                                            className={`w-20 h-20 flex-shrink-0 bg-gray-50 rounded-lg p-2 border cursor-pointer transition-all ${activeImage === img ? 'border-green-500 ring-2 ring-green-500/30' : 'border-gray-200 hover:border-green-300'}`}
+                                        >
+                                            <img
+                                                src={img}
+                                                alt={`${product.name} view ${index + 1}`}
+                                                className="w-full h-full object-contain mix-blend-multiply"
+                                            />
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
                         </div>
 
                         {/* Product Info */}
@@ -83,7 +106,7 @@ const ProductDetail = () => {
                             </div>
 
                             <div className="text-3xl font-bold text-gray-900 mb-6">
-                                ${product.price}
+                                {product.price} ﷼
                             </div>
 
                             <div className="prose prose-lg text-gray-600 mb-8">
@@ -91,14 +114,14 @@ const ProductDetail = () => {
                             </div>
 
                             {/* Features List (Mock) */}
-                            <div className="space-y-3 mb-8">
+                            {/* <div className="space-y-3 mb-8">
                                 {['1 Year Official Warranty', 'Free Doorstep Delivery', '7 Days Return Policy'].map((feature, i) => (
                                     <div key={i} className="flex items-center text-gray-700">
                                         <FaCheckCircle className="text-green-500 mr-3" />
                                         <span>{feature}</span>
                                     </div>
                                 ))}
-                            </div>
+                            </div> */}
 
                             {/* Action Buttons */}
                             <div className="flex flex-col sm:flex-row gap-4">

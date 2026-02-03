@@ -7,7 +7,7 @@ const ProductCard = ({ product }) => {
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm hover:shadow-xl hover:shadow-green-100 transition-all duration-300 overflow-hidden h-full flex flex-col border border-white/60 hover:border-green-200 hover:-translate-y-1">
                 <div className="relative aspect-square overflow-hidden bg-gray-50">
                     <img
-                        src={product.image}
+                        src={product.images[0]}
                         alt={product.name}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         loading="lazy"
@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
                         {product.description}
                     </p>
                     <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-3">
-                        <span className="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">${product.price}</span>
+                        <span className="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">{product.price} ﷼</span>
                         <span className="text-sm font-semibold text-gray-400 group-hover:text-green-600 transition-colors flex items-center gap-1">
                             View Details <span className="text-lg">→</span>
                         </span>
