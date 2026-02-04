@@ -98,12 +98,12 @@ const ProductDetail = () => {
                                 {product.name}
                             </h1>
 
-                            <div className="flex items-center space-x-2 mb-6">
+                            {/* <div className="flex items-center space-x-2 mb-6">
                                 <div className="flex text-yellow-400">
                                     <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
                                 </div>
                                 <span className="text-gray-500 text-sm">(24 reviews)</span>
-                            </div>
+                            </div> */}
 
                             <div className="text-3xl font-bold text-gray-900 mb-6">
                                 {product.price} ﷼
