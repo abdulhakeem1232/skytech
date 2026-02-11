@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { FaWhatsapp, FaArrowLeft, FaCheckCircle, FaStar } from 'react-icons/fa';
+import { FaWhatsapp, FaArrowLeft, FaCheckCircle, FaStar, FaShoppingCart, FaPlus, FaMinus } from 'react-icons/fa';
 import ProductCarousel from '../components/ProductCarousel';
 import { products } from '../data/products';
+import { useCart } from '../context/CartContext';
 
 const ProductDetail = () => {
     const { id } = useParams();
     const navigate = useNavigate();
+    const { addToCart } = useCart();
     const [activeImage, setActiveImage] = useState('');
+    const [quantity, setQuantity] = useState(1);
 
     const product = products.find(p => p.id === parseInt(id));
 
@@ -105,8 +108,20 @@ const ProductDetail = () => {
                                 <span className="text-gray-500 text-sm">(24 reviews)</span>
                             </div> */}
 
-                            <div className="text-3xl font-bold text-gray-900 mb-6">
-                                {product.price} ﷼
+                            <div className="flex items-end gap-3 mb-6">
+                                <div className="text-3xl font-bold text-gray-900">
+                                    {product.price} 	⃁
+                                </div>
+                                {product.originalPrice && (
+                                    <>
+                                        <div className="text-xl text-gray-400 line-through mb-1">
+                                            {product.originalPrice} 	⃁
+                                        </div>
+                                        <div className="mb-1 bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">
+                                            SAVE {product.originalPrice - product.price} 	⃁
+                                        </div>
+                                    </>
+                                )}
                             </div>
 
                             <div className="prose prose-lg text-gray-600 mb-8">
@@ -124,17 +139,44 @@ const ProductDetail = () => {
                             </div> */}
 
                             {/* Action Buttons */}
-                            <div className="flex flex-col sm:flex-row gap-4">
+                            <div className="flex flex-col gap-4">
+                                <div className="flex items-center gap-4">
+                                    <div className="flex items-center border-2 border-gray-100 rounded-2xl p-1 bg-gray-50/50">
+                                        <button
+                                            onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                                            className="p-3 hover:text-green-600 transition-colors"
+                                        >
+                                            <FaMinus />
+                                        </button>
+                                        <span className="w-12 text-center font-bold text-lg">{quantity}</span>
+                                        <button
+                                            onClick={() => setQuantity(quantity + 1)}
+                                            className="p-3 hover:text-green-600 transition-colors"
+                                        >
+                                            <FaPlus />
+                                        </button>
+                                    </div>
+                                    <button
+                                        onClick={() => addToCart(product, quantity)}
+                                        className="flex-1 bg-gray-900 hover:bg-black text-white text-lg font-bold py-4 px-8 rounded-2xl flex items-center justify-center gap-3 transition-all active:scale-[0.98] shadow-xl shadow-gray-200"
+                                    >
+                                        <FaShoppingCart />
+                                        <span>Add to Cart</span>
+                                    </button>
+                                </div>
+
                                 <a
-                                    href={`whatsapp://send?phone=966557794892&text=${whatsappMessage}`}
-                                    className="flex-1 bg-green-600 hover:bg-green-700 text-white text-lg font-semibold py-4 px-8 rounded-full flex items-center justify-center gap-3 transition-colors shadow-lg shadow-green-600/30"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    href={`https://wa.me/966557794892?text=${whatsappMessage}`}
+                                    className="w-full bg-green-600 hover:bg-green-700 text-white text-lg font-bold py-4 px-8 rounded-2xl flex items-center justify-center gap-3 transition-all active:scale-[0.98] shadow-xl shadow-green-600/20"
                                 >
                                     <FaWhatsapp size={24} />
-                                    <span>Order on WhatsApp</span>
+                                    <span>Quick Order via WhatsApp</span>
                                 </a>
                             </div>
                             <p className="text-xs text-gray-400 mt-4 text-center sm:text-left">
-                                *Opens WhatsApp chat with pre-filled message
+                                *Fast and secure checkout via WhatsApp
                             </p>
                         </div>
                     </div>

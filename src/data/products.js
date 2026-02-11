@@ -54,6 +54,7 @@ export const products = [
         id: 1,
         name: "Lenovo ThinkPad E16 Gen 2",
         price: 3899,
+        originalPrice: 3999,
         images: [
             thinkpad1,
             thinkpad2,
@@ -67,6 +68,7 @@ export const products = [
         id: 2,
         name: "HP 250R G10",
         price: 1899,
+        originalPrice: 1999,
         images: [
             hp1,
             hp2,
@@ -81,12 +83,13 @@ export const products = [
         id: 3,
         name: "Lenovo Gaming LOQ 15AHP10",
         price: 4449,
+        originalPrice: 4499,
         images: [
             lenovagaming1,
             lenovagaming2,
             lenovagaming3,
             lenovagaming4,
-            lenovagaming5    
+            lenovagaming5
         ],
         description: "Laptop Lenovo Gaming LOQ 15AHP10 AMD Ryzen 7-250 Processor, 32GB Ram, 1TB SSD M.2, NVIDIA GeForce RTX 5050 8GB Graphics, 15.6-inch Full HD 1920x1080, IPS, 100% sRGB, 144Hz, G-SYNC, 24-Zone RGB Backlit, FreeDos - Luna Grey",
         category: "Laptops"
@@ -95,11 +98,12 @@ export const products = [
         id: 4,
         name: "Dell Tower ECT1250",
         price: 1999,
+        originalPrice: 2099,
         images: [
-           desktopDellTower1,
-           desktopDellTower2,
-           desktopDellTower3,
-           desktopDellTower4
+            desktopDellTower1,
+            desktopDellTower2,
+            desktopDellTower3,
+            desktopDellTower4
         ],
         description: "Desktop Dell Tower Intel Core i5-14400 Processor, 8GB Ram, 512GB SSD M.2, Intel UHD Graphics 730, USB Keyboard & Mouse, Free Dos - Black",
         category: "Desktop tower"
@@ -108,12 +112,13 @@ export const products = [
         id: 5,
         name: "ThinkCentre neo 50a 27",
         price: 2649,
+        originalPrice: 2799,
         images: [
             desktopLenova1,
             desktopLenova2,
             desktopLenova3,
             desktopLenova4,
-            desktopLenova5           
+            desktopLenova5
         ],
         description: "Desktop Lenovo ThinkCentre neo 50a 27 All in one Intel core i5-13420H Processor, 8GB Ram, 512GB SSD M.2, Intel UHD Graphics, 27-inch Full HD 1920x1080 Display IPS, Wireless Keyboard + Mouse, Free Dos - Luna Grey",
         category: "Desktop all in one"
@@ -122,8 +127,9 @@ export const products = [
         id: 6,
         name: "Dell 27 All-in-One EC27250",
         price: 5299,
+        originalPrice: 5399,
         images: [
-           desktopDell1,
+            desktopDell1,
             desktopDell2,
             desktopDell3,
             desktopDell4,
@@ -137,6 +143,7 @@ export const products = [
         id: 7,
         name: " Dell S2721HN",
         price: 549,
+        originalPrice: 599,
         images: [
             monitorDell1,
             monitorDell2,
@@ -152,6 +159,7 @@ export const products = [
         id: 8,
         name: " HP Color LaserJet Pro MFP 3303sdw",
         price: 1399,
+        originalPrice: 1499,
         images: [
             laserjetPrint1,
             laserjetPrint2,
@@ -164,6 +172,7 @@ export const products = [
         id: 9,
         name: " Lenovo ThinkPad E16 Gen 3",
         price: 4249,
+        originalPrice: 4349,
         images: [
             thinkpad_gen3_1,
             thinkpad_gen3_2,

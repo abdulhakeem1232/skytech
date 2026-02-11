@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { HiMenu, HiX } from 'react-icons/hi';
+import { HiMenu, HiX, HiOutlineShoppingBag } from 'react-icons/hi';
+import { useCart } from '../context/CartContext';
 
 import logo from '../assets/logo.jpg';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const { cartCount } = useCart();
 
     const navLinks = [
         { name: 'Home', path: '/' },
@@ -34,15 +36,31 @@ const Navbar = () => {
                         ))}
                     </div>
 
-                    {/* Mobile Menu Button */}
-                    <div className="md:hidden flex items-center">
-                        <button
-                            onClick={() => setIsOpen(!isOpen)}
-                            className="text-gray-600 hover:text-green-600 focus:outline-none"
-                            aria-label="Toggle menu"
+
+                    {/* Cart and Mobile Menu Button */}
+                    <div className="flex items-center gap-4">
+                        <Link
+                            to="/cart"
+                            className="relative p-2 text-gray-600 hover:text-green-600 transition-colors"
+                            aria-label="View cart"
                         >
-                            {isOpen ? <HiX size={28} /> : <HiMenu size={28} />}
-                        </button>
+                            <HiOutlineShoppingBag size={28} />
+                            {cartCount > 0 && (
+                                <span className="absolute top-0 right-0 bg-green-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full ring-2 ring-white">
+                                    {cartCount}
+                                </span>
+                            )}
+                        </Link>
+
+                        <div className="md:hidden flex items-center">
+                            <button
+                                onClick={() => setIsOpen(!isOpen)}
+                                className="text-gray-600 hover:text-green-600 focus:outline-none"
+                                aria-label="Toggle menu"
+                            >
+                                {isOpen ? <HiX size={28} /> : <HiMenu size={28} />}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

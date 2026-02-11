@@ -1,7 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
+import { HiOutlineShoppingBag } from 'react-icons/hi';
 
 const ProductCard = ({ product }) => {
+    const { addToCart } = useCart();
+
+    const handleAddToCart = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        addToCart(product);
+    };
+
     return (
         <Link to={`/products/${product.id}`} className="group block h-full">
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm hover:shadow-xl hover:shadow-green-100 transition-all duration-300 overflow-hidden h-full flex flex-col border border-white/60 hover:border-green-200 hover:-translate-y-1">
@@ -29,10 +39,23 @@ const ProductCard = ({ product }) => {
                         {product.description}
                     </p>
                     <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-3">
-                        <span className="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">{product.price} ﷼</span>
-                        <span className="text-sm font-semibold text-gray-400 group-hover:text-green-600 transition-colors flex items-center gap-1">
-                            View Details <span className="text-lg">→</span>
-                        </span>
+                        <div className="flex flex-col">
+                            {product.originalPrice && (
+                                <span className="text-sm font-medium text-gray-400 line-through">
+                                    {product.originalPrice} 	⃁
+                                </span>
+                            )}
+                            <span className="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">
+                                {product.price} 	⃁
+                            </span>
+                        </div>
+                        <button
+                            onClick={handleAddToCart}
+                            className="p-3 bg-gray-50 text-gray-700 hover:bg-green-600 hover:text-white rounded-xl transition-all active:scale-95 group/btn"
+                            aria-label="Add to cart"
+                        >
+                            <HiOutlineShoppingBag size={20} className="group-hover/btn:scale-110 transition-transform" />
+                        </button>
                     </div>
                 </div>
             </div>

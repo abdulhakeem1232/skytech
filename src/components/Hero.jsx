@@ -11,10 +11,10 @@ const Hero = () => {
                     alt="Technology Background"
                     className="w-full h-full object-cover opacity-40 mix-blend-overlay"
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900/90 to-green-900/40"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-gray-900/70 to-green-900/30"></div>
             </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-32">
                 <div className="max-w-2xl">
                     <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight drop-shadow-lg">
                         Next Gen Tech <br />
