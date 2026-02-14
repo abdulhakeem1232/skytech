@@ -62,7 +62,16 @@ export const products = [
             thinkpad4
         ],
         description: "Laptop Lenovo ThinkPad E16 Intel Core Ultra 7-155H Processor, 16GB DDR5, 512GB SSD M.2, Intel Arc Graphics, 16-inch Display WUXGA 1920x1200 IPS, Free Dos - Black",
-        category: "Laptops"
+        category: "Laptops",
+        specifications: {
+            "Product Type": "Business Laptop",
+            "Model No": "Lenovo ThinkPad E16 Gen 2",
+            "Processor": "Intel Core Ultra 7-155H",
+            "RAM": "16GB DDR5",
+            "Storage": "512GB SSD M.2",
+            "Graphics": "Intel Arc Graphics",
+            "Display": "16-inch WUXGA (1920x1200) IPS"
+        }
     },
     {
         id: 2,
@@ -77,7 +86,16 @@ export const products = [
             hp4
         ],
         description: "Laptop HP 250R G10 Intel Core 5-120U Processor, 8GB Ram, 512GB SSD M.2, Intel Graphics, 15.6-inch Full HD Display 1920x1080, Free Dos - Turbo silver",
-        category: "Laptops"
+        category: "Laptops",
+        specifications: {
+            "Product Type": "Budget Laptop",
+            "Model No": "HP 250R G10",
+            "Processor": "Intel Core 5-120U",
+            "RAM": "8GB Ram",
+            "Storage": "512GB SSD M.2",
+            "Graphics": "Intel Graphics",
+            "Display": "15.6-inch Full HD (1920x1080)"
+        }
     },
     {
         id: 3,
@@ -92,7 +110,16 @@ export const products = [
             lenovagaming5
         ],
         description: "Laptop Lenovo Gaming LOQ 15AHP10 AMD Ryzen 7-250 Processor, 32GB Ram, 1TB SSD M.2, NVIDIA GeForce RTX 5050 8GB Graphics, 15.6-inch Full HD 1920x1080, IPS, 100% sRGB, 144Hz, G-SYNC, 24-Zone RGB Backlit, FreeDos - Luna Grey",
-        category: "Laptops"
+        category: "Laptops",
+        specifications: {
+            "Product Type": "Gaming Laptop",
+            "Model No": "Lenovo Gaming LOQ 15AHP10",
+            "Processor": "AMD Ryzen 7-250",
+            "RAM": "32GB Ram",
+            "Storage": "1TB SSD M.2",
+            "Graphics": "NVIDIA GeForce RTX 5050 8GB",
+            "Display": "15.6-inch Full HD (1920x1080) 144Hz"
+        }
     },
     {
         id: 4,
@@ -106,7 +133,15 @@ export const products = [
             desktopDellTower4
         ],
         description: "Desktop Dell Tower Intel Core i5-14400 Processor, 8GB Ram, 512GB SSD M.2, Intel UHD Graphics 730, USB Keyboard & Mouse, Free Dos - Black",
-        category: "Desktop tower"
+        category: "Desktop Tower",
+        specifications: {
+            "Product Type": "Desktop Computer",
+            "Model No": "Dell Tower ECT1250",
+            "Processor": "Intel Core i5-14400",
+            "RAM": "8GB Ram",
+            "Storage": "512GB SSD M.2",
+            "Graphics": "Intel UHD Graphics 730"
+        }
     },
     {
         id: 5,
@@ -121,7 +156,16 @@ export const products = [
             desktopLenova5
         ],
         description: "Desktop Lenovo ThinkCentre neo 50a 27 All in one Intel core i5-13420H Processor, 8GB Ram, 512GB SSD M.2, Intel UHD Graphics, 27-inch Full HD 1920x1080 Display IPS, Wireless Keyboard + Mouse, Free Dos - Luna Grey",
-        category: "Desktop all in one"
+        category: "Desktop All in One",
+        specifications: {
+            "Product Type": "All-in-One Desktop",
+            "Model No": "ThinkCentre neo 50a 27",
+            "Processor": "Intel core i5-13420H",
+            "RAM": "8GB Ram",
+            "Storage": "512GB SSD M.2",
+            "Graphics": "Intel UHD Graphics",
+            "Display": "27-inch Full HD (1920x1080) IPS"
+        }
     },
     {
         id: 6,
@@ -137,7 +181,16 @@ export const products = [
             desktopDell56
         ],
         description: "Desktop Dell 27 All-in-One Intel Core 7-150U Processor, 16GB Ram, 1TB SSD M.2, NVIDIA GeForce MX570A 2GB GDDR6, 27-inch Touch Full HD Display 1920x1080, Wireless Dell Keyboard & Mouse, Windows 11 Professional - White",
-        category: "Desktop all in one"
+        category: "Desktop All in One",
+        specifications: {
+            "Product Type": "All-in-One Desktop",
+            "Model No": "Dell 27 All-in-One EC27250",
+            "Processor": "Intel Core 7-150U",
+            "RAM": "16GB Ram",
+            "Storage": "1TB SSD M.2",
+            "Graphics": "NVIDIA GeForce MX570A 2GB GDDR6",
+            "Display": "27-inch Touch Full HD (1920x1080)"
+        }
     },
     {
         id: 7,
@@ -153,7 +206,16 @@ export const products = [
             monitorDell6
         ],
         description: "Dell S2721HN Computer Monitor 27-Inch Full HD 1920x1080 Resolution, LED Backlight Technology, IPS Panel Type, 75Hz Refresh Rate, 4ms Response Time, HDMI Port - Gray",
-        category: "Monitors"
+        category: "Monitors",
+        specifications: {
+            "Product Type": "Computer Monitor",
+            "Model No": "Dell S2721HN",
+            "Screen Size": "27-Inch",
+            "Resolution": "Full HD (1920x1080)",
+            "Panel Type": "IPS",
+            "Refresh Rate": "75Hz",
+            "Response Time": "4ms"
+        }
     },
     {
         id: 8,
@@ -166,7 +228,13 @@ export const products = [
             laserjetPrint3
         ],
         description: "HP Color LaserJet Pro MFP 3303sdw Printer Multi-function, Print, Copy, Scan - 499M6A",
-        category: "LaserJet Printer"
+        category: "LaserJet Printer",
+        specifications: {
+            "Product Type": "Multi-function Printer",
+            "Model No": "HP Color LaserJet Pro MFP 3303sdw",
+            "Functions": "Print, Copy, Scan",
+            "Model ID": "499M6A"
+        }
     },
     {
         id: 9,
@@ -183,6 +251,15 @@ export const products = [
             thinkpad_gen3_7
         ],
         description: "Laptop Lenovo ThinkPad E16 Intel Core Ultra 7-255H Processor, 16GB DDR5, 1TB SSD M.2, Integrated Intel Arc 140T GPU, 16-inch Display WUXGA 1920x1200 IPS, Free Dos - Black",
-        category: "Laptops"
+        category: "Laptops",
+        specifications: {
+            "Product Type": "Business Laptop",
+            "Model No": "Lenovo ThinkPad E16 Gen 3",
+            "Processor": "Intel Core Ultra 7-255H",
+            "RAM": "16GB DDR5",
+            "Storage": "1TB SSD M.2",
+            "Graphics": "Integrated Intel Arc 140T GPU",
+            "Display": "16-inch WUXGA (1920x1200) IPS"
+        }
     }
 ];

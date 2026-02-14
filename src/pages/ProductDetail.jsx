@@ -128,6 +128,21 @@ const ProductDetail = () => {
                                 <p>{product.description}</p>
                             </div>
 
+                            {/* Technical Specifications */}
+                            {product.specifications && Object.keys(product.specifications).length > 0 && (
+                                <div className="mb-8 border-t border-gray-100 pt-8">
+                                    <h2 className="text-xl font-bold text-gray-900 mb-4">Technical Specifications</h2>
+                                    <div className="grid grid-cols-1 gap-y-2">
+                                        {Object.entries(product.specifications).map(([key, value]) => (
+                                            <div key={key} className="flex justify-between py-2 border-b border-gray-50 text-sm">
+                                                <span className="font-semibold text-gray-500">{key}</span>
+                                                <span className="text-gray-900 text-right font-medium">{value}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
                             {/* Features List (Mock) */}
                             {/* <div className="space-y-3 mb-8">
                                 {['1 Year Official Warranty', 'Free Doorstep Delivery', '7 Days Return Policy'].map((feature, i) => (
