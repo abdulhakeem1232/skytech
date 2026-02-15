@@ -7,8 +7,11 @@ import React from 'react';
  */
 const CurrencySymbol = ({ className = "w-[1em] h-[1em]", inline = true }) => {
     return (
-        <span className={`inline-flex items-center gap-0.5 ${inline ? 'font-bold' : ''} ${className}`}>
-            <span className="text-[0.9em] opacity-90">⃁</span>
+        <span
+            className={`inline-flex items-center ${inline ? 'font-bold ml-1' : ''} ${className}`}
+            style={{ fontFamily: '"saudi_riyal", sans-serif' }}
+        >
+            ⃁
         </span>
     );
 };
