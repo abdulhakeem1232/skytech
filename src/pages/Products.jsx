@@ -1,13 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useSearchParams } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import { products } from '../data/products';
 
 const Products = () => {
-    const [selectedCategory, setSelectedCategory] = useState('All');
+    const [searchParams, setSearchParams] = useSearchParams();
+    const categoryQuery = searchParams.get('category') || 'All';
+    const [selectedCategory, setSelectedCategory] = useState(categoryQuery);
+
+    useEffect(() => {
+        setSelectedCategory(categoryQuery);
+    }, [categoryQuery]);
+
+    const pageTitle = selectedCategory === 'All'
+        ? "All Products & Gadgets | Sky Arc Computers Khobar"
+        : `${selectedCategory} | Premium Tech in Saudi Arabia | Sky Arc Computers`;
+
+    const pageDescription = selectedCategory === 'All'
+        ? "Explore our full range of premium electronics, from high-performance laptops to custom desktop towers. Best prices in Khobar."
+        : `Shop the best ${selectedCategory} at Sky Arc Computers. High-quality original products with fast delivery in Saudi Arabia.`;
 
     // get unique categories
     const categories = ['All', ...new Set(products.map(p => p.category))];
+
+    const handleCategoryChange = (category) => {
+        if (category === 'All') {
+            searchParams.delete('category');
+        } else {
+            searchParams.set('category', category);
+        }
+        setSearchParams(searchParams);
+    };
 
     // filter products
     const filteredProducts = selectedCategory === 'All'
@@ -17,8 +41,9 @@ const Products = () => {
     return (
         <>
             <Helmet>
-                <title>All Products | Sky Arc Computers</title>
-                <meta name="description" content="Browse our complete catalog of electronics and gadgets." />
+                <title>{pageTitle}</title>
+                <meta name="description" content={pageDescription} />
+                <link rel="canonical" href={`https://skyarcc.com/products${selectedCategory !== 'All' ? `?category=${selectedCategory}` : ''}`} />
             </Helmet>
 
             <div className="bg-gray-50 min-h-screen py-12">
@@ -35,7 +60,7 @@ const Products = () => {
                         {categories.map((category) => (
                             <button
                                 key={category}
-                                onClick={() => setSelectedCategory(category)}
+                                onClick={() => handleCategoryChange(category)}
                                 className={`px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 shadow-sm ${selectedCategory === category
                                     ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg shadow-green-500/30 scale-105'
                                     : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-green-600 border border-white/50'

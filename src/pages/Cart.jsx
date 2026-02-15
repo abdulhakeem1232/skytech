@@ -38,7 +38,9 @@ export default function Cart() {
     return (
         <div className="bg-gray-50 min-h-screen py-12">
             <Helmet>
-                <title>Shopping Cart | Sky Arc Computers</title>
+                <title>Your Shopping Cart | Sky Arc Computers Khobar</title>
+                <meta name="description" content="Review your items and checkout securely at Sky Arc Computers." />
+                <link rel="canonical" href="https://skyarcc.com/cart" />
             </Helmet>
 
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

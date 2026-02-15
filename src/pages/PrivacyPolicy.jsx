@@ -6,7 +6,8 @@ const PrivacyPolicy = () => {
         <>
             <Helmet>
                 <title>Privacy Policy | Sky Arc Computers</title>
-                <meta name="description" content="Privacy Policy for Sky Arc Computers. Learn how we collect, use, and protect your personal information." />
+                <meta name="description" content="Read the privacy policy of Sky Arc Computers. We value your data security." />
+                <link rel="canonical" href="https://skyarcc.com/privacy-policy" />
             </Helmet>
 
             <div className="bg-gray-50 min-h-screen py-12 px-4 sm:px-6 lg:px-8">

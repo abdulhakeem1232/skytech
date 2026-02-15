@@ -7,6 +7,46 @@ import { products } from '../data/products';
 import { useCart } from '../context/CartContext';
 import CurrencySymbol from '../components/CurrencySymbol';
 
+const SpecificationsTable = ({ specifications }) => {
+    if (!specifications || Object.keys(specifications).length === 0) return null;
+    return (
+        <div className="bg-white rounded-[2.5rem] border border-emerald-50 p-8 md:p-12 shadow-2xl shadow-emerald-100/20 relative overflow-hidden">
+            {/* Background Accent */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-50/50 rounded-full blur-3xl -mr-32 -mt-32"></div>
+
+            <div className="relative z-10">
+                <div className="flex items-center gap-5 mb-10">
+                    <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg shadow-green-200 text-white">
+                        <FaCheckCircle size={24} />
+                    </div>
+                    <div>
+                        <h2 className="text-2xl font-black text-gray-900 tracking-tight leading-none">Technical Specifications</h2>
+                        <p className="text-emerald-600 text-sm font-bold mt-1 uppercase tracking-widest">Detail & Performance</p>
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 gap-2">
+                    {Object.entries(specifications).map(([key, value], index) => (
+                        <div
+                            key={key}
+                            className={`grid grid-cols-[1fr_1.8fr] md:grid-cols-[1.2fr_2.5fr] py-6 px-7 rounded-[1.5rem] text-sm gap-8 items-start transition-all duration-300 ${index % 2 === 0 ? 'bg-emerald-50/40' : 'bg-transparent'
+                                } hover:bg-emerald-50 hover:shadow-md hover:shadow-emerald-100/50 group border border-transparent hover:border-emerald-100`}
+                        >
+                            <div className="flex items-center gap-3">
+                                <div className="w-2 h-2 rounded-full bg-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <span className="font-extrabold text-emerald-900/40 uppercase tracking-[0.15em] text-[11px] group-hover:text-emerald-600 transition-colors">
+                                    {key}
+                                </span>
+                            </div>
+                            <span className="text-gray-900 font-bold leading-relaxed">{value}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
+
 const ProductDetail = () => {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -49,11 +89,46 @@ const ProductDetail = () => {
         `Hello, I am interested in buying: *${product.name}* (ID: ${product.id}). Is it available?`
     );
 
+    const productSchema = {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": product.name,
+        "image": product.images.map(img => `https://skyarcc.com${img}`),
+        "description": product.description,
+        "brand": {
+            "@type": "Brand",
+            "name": "Sky Arc Computers"
+        },
+        "offers": {
+            "@type": "Offer",
+            "url": `https://skyarcc.com/products/${product.id}`,
+            "priceCurrency": "SAR",
+            "price": product.price,
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition"
+        },
+        "category": product.category
+    };
+
     return (
         <>
             <Helmet>
-                <title>{`${product.name} | Sky Arc Computers`}</title>
-                <meta name="description" content={product.description} />
+                <title>{`${product.name} | Computer Shop Khobar | Sky Arc Computers`}</title>
+                <meta name="description" content={`Buy ${product.name} at Sky Arc Computers. ${product.description.substring(0, 150)}... Original products in Khobar, Saudi Arabia.`} />
+                <link rel="canonical" href={`https://skyarcc.com/products/${product.id}`} />
+
+                {/* Product JSON-LD */}
+                <script type="application/ld+json">
+                    {JSON.stringify(productSchema)}
+                </script>
+
+                {/* Open Graph / Facebook */}
+                <meta property="og:type" content="product" />
+                <meta property="og:title" content={`${product.name} | Sky Arc Computers`} />
+                <meta property="og:description" content={product.description} />
+                <meta property="og:image" content={product.images[0]} />
+                <meta property="product:price:amount" content={product.price} />
+                <meta property="product:price:currency" content="SAR" />
             </Helmet>
 
             <div className="bg-white min-h-screen py-8">
@@ -129,21 +204,6 @@ const ProductDetail = () => {
                                 <p>{product.description}</p>
                             </div>
 
-                            {/* Technical Specifications */}
-                            {product.specifications && Object.keys(product.specifications).length > 0 && (
-                                <div className="mb-8 border-t border-gray-100 pt-8">
-                                    <h2 className="text-xl font-bold text-gray-900 mb-4">Technical Specifications</h2>
-                                    <div className="grid grid-cols-1 gap-y-2">
-                                        {Object.entries(product.specifications).map(([key, value]) => (
-                                            <div key={key} className="flex justify-between py-2 border-b border-gray-50 text-sm">
-                                                <span className="font-semibold text-gray-500">{key}</span>
-                                                <span className="text-gray-900 text-right font-medium">{value}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-
                             {/* Features List (Mock) */}
                             {/* <div className="space-y-3 mb-8">
                                 {['1 Year Official Warranty', 'Free Doorstep Delivery', '7 Days Return Policy'].map((feature, i) => (
@@ -191,10 +251,21 @@ const ProductDetail = () => {
                                     <span>Quick Order via WhatsApp</span>
                                 </a>
                             </div>
+
+                            {/* Mobile Technical Specifications (Under WhatsApp button) */}
+                            <div className="lg:hidden mt-12 px-2">
+                                <SpecificationsTable specifications={product.specifications} />
+                            </div>
+
                             <p className="text-xs text-gray-400 mt-4 text-center sm:text-left">
                                 *Fast and secure checkout via WhatsApp
                             </p>
                         </div>
+                    </div>
+
+                    {/* Desktop Technical Specifications (Below the main section) */}
+                    <div className="hidden lg:block mb-16">
+                        <SpecificationsTable specifications={product.specifications} />
                     </div>
 
                     {/* Related Products */}

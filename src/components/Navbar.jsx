@@ -1,17 +1,29 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { HiMenu, HiX, HiOutlineShoppingBag } from 'react-icons/hi';
+import { HiMenu, HiX, HiOutlineShoppingBag, HiChevronDown } from 'react-icons/hi';
 import { useCart } from '../context/CartContext';
+import { products } from '../data/products';
 
 import logo from '../assets/logo.jpg';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
     const { cartCount } = useCart();
+
+    // get unique categories
+    const categories = [...new Set(products.map(p => p.category))];
 
     const navLinks = [
         { name: 'Home', path: '/' },
-        { name: 'Products', path: '/products' },
+        {
+            name: 'Products',
+            path: '/products',
+            sublinks: categories.map(cat => ({
+                name: cat,
+                path: `/products?category=${encodeURIComponent(cat)}`
+            }))
+        },
         { name: 'About Us', path: '/about' },
     ];
 
@@ -24,15 +36,49 @@ const Navbar = () => {
                     </Link>
 
                     {/* Desktop Menu */}
-                    <div className="hidden md:flex space-x-8">
+                    <div className="hidden md:flex space-x-8 h-full items-center">
                         {navLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                to={link.path}
-                                className="text-gray-600 hover:text-green-600 transition-colors duration-300 font-medium"
-                            >
-                                {link.name}
-                            </Link>
+                            <div key={link.name} className="relative group h-full flex items-center">
+                                {link.sublinks ? (
+                                    <>
+                                        <Link
+                                            to={link.path}
+                                            className="text-gray-600 group-hover:text-green-600 transition-colors duration-300 font-medium flex items-center gap-1"
+                                        >
+                                            {link.name}
+                                            <HiChevronDown className="group-hover:rotate-180 transition-transform duration-300" />
+                                        </Link>
+
+                                        {/* Dropdown Menu */}
+                                        <div className="absolute top-24 left-1/2 -translate-x-1/2 w-64 bg-white rounded-2xl shadow-xl py-4 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-[60]">
+                                            <div className="grid grid-cols-1 gap-1 px-2">
+                                                <Link
+                                                    to="/products"
+                                                    className="px-4 py-2.5 rounded-xl text-sm font-medium text-gray-700 hover:text-green-600 hover:bg-green-50 transition-all"
+                                                >
+                                                    All Products
+                                                </Link>
+                                                {link.sublinks.map((sub) => (
+                                                    <Link
+                                                        key={sub.name}
+                                                        to={sub.path}
+                                                        className="px-4 py-2.5 rounded-xl text-sm font-medium text-gray-700 hover:text-green-600 hover:bg-green-50 transition-all"
+                                                    >
+                                                        {sub.name}
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <Link
+                                        to={link.path}
+                                        className="text-gray-600 hover:text-green-600 transition-colors duration-300 font-medium"
+                                    >
+                                        {link.name}
+                                    </Link>
+                                )}
+                            </div>
                         ))}
                     </div>
 
@@ -67,17 +113,58 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className="md:hidden bg-white border-t border-gray-100">
-                    <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <div className="md:hidden bg-white border-t border-gray-100 overflow-y-auto max-h-[calc(100vh-6rem)]">
+                    <div className="px-2 pt-2 pb-6 space-y-1 sm:px-3">
                         {navLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                to={link.path}
-                                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50 transition-colors duration-300"
-                                onClick={() => setIsOpen(false)}
-                            >
-                                {link.name}
-                            </Link>
+                            <div key={link.name}>
+                                {link.sublinks ? (
+                                    <div className="space-y-1">
+                                        <button
+                                            onClick={() => setIsMobileProductsOpen(!isMobileProductsOpen)}
+                                            className="w-full flex justify-between items-center px-3 py-3 rounded-xl text-base font-bold text-gray-700 hover:text-green-600 hover:bg-gray-50 transition-colors"
+                                        >
+                                            {link.name}
+                                            <HiChevronDown className={`transition-transform duration-300 ${isMobileProductsOpen ? 'rotate-180' : ''}`} />
+                                        </button>
+
+                                        {isMobileProductsOpen && (
+                                            <div className="pl-6 space-y-1 pb-2">
+                                                <Link
+                                                    to="/products"
+                                                    className="block px-3 py-2.5 rounded-lg text-sm font-semibold text-gray-600 hover:text-green-600 hover:bg-gray-50"
+                                                    onClick={() => {
+                                                        setIsOpen(false);
+                                                        setIsMobileProductsOpen(false);
+                                                    }}
+                                                >
+                                                    All Products
+                                                </Link>
+                                                {link.sublinks.map((sub) => (
+                                                    <Link
+                                                        key={sub.name}
+                                                        to={sub.path}
+                                                        className="block px-3 py-2.5 rounded-lg text-sm font-semibold text-gray-600 hover:text-green-600 hover:bg-gray-50"
+                                                        onClick={() => {
+                                                            setIsOpen(false);
+                                                            setIsMobileProductsOpen(false);
+                                                        }}
+                                                    >
+                                                        {sub.name}
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                ) : (
+                                    <Link
+                                        to={link.path}
+                                        className="block px-3 py-3 rounded-xl text-base font-bold text-gray-700 hover:text-green-600 hover:bg-gray-50 transition-colors"
+                                        onClick={() => setIsOpen(false)}
+                                    >
+                                        {link.name}
+                                    </Link>
+                                )}
+                            </div>
                         ))}
                     </div>
                 </div>

@@ -10,13 +10,55 @@ const Home = () => {
     // Featured products for carousel (e.g., first 8)
     const featuredProducts = products.slice(0, 8);
 
+    const businessSchema = {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Sky Arc Computers",
+        "image": "https://skyarcc.com/logo.jpg",
+        "@id": "https://skyarcc.com/",
+        "url": "https://skyarcc.com/",
+        "telephone": "+966593121981",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Dossary Computer Mall, Ground Floor",
+            "addressLocality": "Al Khobar",
+            "postalCode": "34621",
+            "addressCountry": "SA"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 26.2886,
+            "longitude": 50.2108
+        },
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+            "opens": "09:00",
+            "closes": "23:30"
+        },
+        "sameAs": [
+            "https://www.facebook.com/skyarc.computers/",
+            "https://www.instagram.com/skyarc.computers/",
+            "https://www.linkedin.com/company/sky-arc-computers/",
+            "https://share.google/Py958pKSMVfuT5oEw"
+        ]
+    };
+
     return (
         <>
             <Helmet>
-                <title>Sky Arc Computers | Premium Electronics Store</title>
-                <meta name="description" content="Discover premium electronics, gadgets, and accessories at Sky Arc Computers. Fast delivery and authentic products." />
-                <meta property="og:title" content="Sky Arc Computers | Premium Electronics Store" />
-                <meta property="og:description" content="Discover premium electronics, gadgets, and accessories at Sky Arc Computers." />
+                <title>Premium Computer Shop in Khobar, Saudi Arabia | Sky Arc Computers</title>
+                <meta name="description" content="Visit Sky Arc Computers in Khobar for the best deals on premium laptops, custom desktops, and accessories. Original products with fast delivery in Saudi Arabia." />
+                <link rel="canonical" href="https://skyarcc.com/" />
+
+                {/* JSON-LD Structured Data */}
+                <script type="application/ld+json">
+                    {JSON.stringify(businessSchema)}
+                </script>
+
+                {/* Open Graph / Facebook */}
+                <meta property="og:title" content="Sky Arc Computers | Best Computer Shop in Khobar" />
+                <meta property="og:description" content="Shop premium laptops and desktops at Sky Arc Computers. Quality tech delivered to your doorstep in Saudi Arabia." />
             </Helmet>
 
             <main>

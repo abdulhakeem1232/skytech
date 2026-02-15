@@ -4,10 +4,11 @@ import { FaShippingFast, FaUserFriends, FaHistory } from 'react-icons/fa';
 
 const About = () => {
     return (
-        <>
+        <div className="bg-white min-h-screen">
             <Helmet>
-                <title>About Us | Sky Arc Computers</title>
-                <meta name="description" content="Learn more about Sky Arc Computers' mission and commitment to quality." />
+                <title>About Us | Sky Arc Computers - Your Tech Partner in Khobar</title>
+                <meta name="description" content="Learn more about Sky Arc Computers. We provide premium electronics and top-notch customer service in Al Khobar, Saudi Arabia." />
+                <link rel="canonical" href="https://skyarcc.com/about" />
             </Helmet>
 
             {/* Header Banner */}
@@ -81,7 +82,7 @@ const About = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
