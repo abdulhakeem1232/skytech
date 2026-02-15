@@ -3,6 +3,7 @@ import { useCart } from '../context/CartContext';
 import { FaWhatsapp, FaTrash, FaMinus, FaPlus, FaArrowLeft, FaShoppingBag } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import CurrencySymbol from '../components/CurrencySymbol';
 
 export default function Cart() {
     const {
@@ -18,8 +19,8 @@ export default function Cart() {
 
         const itemsList = cartItems.map((item, index) =>
             `${index + 1}. *${item.name}* (ID: ${item.id})\n` +
-            `   Qty: ${item.quantity} x ${item.price} 	⃁\n` +
-            `   Subtotal: ${item.quantity * item.price} 	⃁`
+            `   Qty: ${item.quantity} x ${item.price} SAR\n` +
+            `   Subtotal: ${item.quantity * item.price} SAR`
         ).join('\n\n');
 
         const message =
@@ -27,7 +28,7 @@ export default function Cart() {
             `------------------------\n` +
             `${itemsList}\n` +
             `------------------------\n` +
-            `*Total Amount: ${cartTotal} 	⃁*\n\n` +
+            `*Total Amount: ${cartTotal} SAR*\n\n` +
             `I would like to place an order for these items. Is everything available?`;
 
         const encodedMessage = encodeURIComponent(message);
@@ -110,7 +111,7 @@ export default function Cart() {
                                                 </button>
                                             </div>
                                             <div className="text-lg font-bold text-gray-900">
-                                                {item.price * item.quantity} 	⃁
+                                                {item.price * item.quantity} <CurrencySymbol />
                                             </div>
                                         </div>
                                     </div>
@@ -133,7 +134,7 @@ export default function Cart() {
                                 <div className="space-y-4 mb-6">
                                     <div className="flex justify-between text-gray-600">
                                         <span>Subtotal</span>
-                                        <span>{cartTotal} 	⃁</span>
+                                        <span>{cartTotal} <CurrencySymbol /></span>
                                     </div>
                                     <div className="flex justify-between text-gray-600">
                                         <span>Delivery</span>
@@ -143,7 +144,7 @@ export default function Cart() {
                                         <span className="text-lg font-bold text-gray-900">Total</span>
                                         <div className="text-right">
                                             <div className="text-2xl font-black text-green-600 leading-none">
-                                                {cartTotal} 	⃁
+                                                {cartTotal} <CurrencySymbol />
                                             </div>
                                             <p className="text-[10px] text-gray-400 mt-1 uppercase tracking-wider">Inclusive of VAT</p>
                                         </div>

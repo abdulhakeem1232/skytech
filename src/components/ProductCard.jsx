@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { HiOutlineShoppingBag } from 'react-icons/hi';
+import CurrencySymbol from './CurrencySymbol';
 
 const ProductCard = ({ product }) => {
     const { addToCart } = useCart();
@@ -42,11 +43,11 @@ const ProductCard = ({ product }) => {
                         <div className="flex flex-col">
                             {product.originalPrice && (
                                 <span className="text-sm font-medium text-gray-400 line-through">
-                                    {product.originalPrice} 	⃁
+                                    {product.originalPrice} <CurrencySymbol />
                                 </span>
                             )}
                             <span className="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">
-                                {product.price} 	⃁
+                                {product.price} <CurrencySymbol />
                             </span>
                         </div>
                         <button

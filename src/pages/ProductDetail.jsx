@@ -5,6 +5,7 @@ import { FaWhatsapp, FaArrowLeft, FaCheckCircle, FaStar, FaShoppingCart, FaPlus,
 import ProductCarousel from '../components/ProductCarousel';
 import { products } from '../data/products';
 import { useCart } from '../context/CartContext';
+import CurrencySymbol from '../components/CurrencySymbol';
 
 const ProductDetail = () => {
     const { id } = useParams();
@@ -110,15 +111,15 @@ const ProductDetail = () => {
 
                             <div className="flex items-end gap-3 mb-6">
                                 <div className="text-3xl font-bold text-gray-900">
-                                    {product.price} 	⃁
+                                    {product.price} <CurrencySymbol />
                                 </div>
                                 {product.originalPrice && (
                                     <>
                                         <div className="text-xl text-gray-400 line-through mb-1">
-                                            {product.originalPrice} 	⃁
+                                            {product.originalPrice} <CurrencySymbol />
                                         </div>
                                         <div className="mb-1 bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">
-                                            SAVE {product.originalPrice - product.price} 	⃁
+                                            SAVE {product.originalPrice - product.price} <CurrencySymbol />
                                         </div>
                                     </>
                                 )}
