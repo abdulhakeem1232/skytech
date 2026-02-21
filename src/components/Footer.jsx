@@ -1,5 +1,7 @@
 import { FaWhatsapp, FaInstagram, FaFacebook, FaMapMarkerAlt, FaEnvelope, FaPhoneAlt, FaClock, FaLinkedin, FaYoutube, FaTiktok } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import vatLogo from '../assets/vatlogo.png';
+import vatCert from '../assets/vat.jpeg';
 
 const Footer = () => {
     return (
@@ -9,10 +11,25 @@ const Footer = () => {
                     {/* Brand Info */}
                     <div>
                         <h3 className="text-2xl font-bold mb-4">Sky Arc Computers</h3>
-                        <p className="text-gray-400 mb-4">
+                        <p className="text-gray-400 mb-6">
                             Your one-stop destination for premium electronics and lifestyle products.
                             We deliver quality to your doorstep.
                         </p>
+                        <div className="mt-4">
+                            <a
+                                href={vatCert}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-block hover:opacity-80 transition-opacity"
+                            >
+                                <img
+                                    src={vatLogo}
+                                    alt="VAT Certificate"
+                                    className="h-16 w-auto rounded border border-gray-700 bg-white p-1"
+                                />
+                                <p className="text-xs text-gray-400 mt-2">Certified VAT Registered</p>
+                            </a>
+                        </div>
                     </div>
 
                     {/* Quick Links */}
@@ -22,6 +39,7 @@ const Footer = () => {
                             <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">Home</Link></li>
                             <li><Link to="/products" className="text-gray-400 hover:text-white transition-colors">Products</Link></li>
                             <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors">About Us</Link></li>
+                            <li><Link to="/shipping-policy" className="text-gray-400 hover:text-white transition-colors">Shipping Policy</Link></li>
                             <li><Link to="/privacy-policy" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</Link></li>
                             <li><Link to="/return-policy" className="text-gray-400 hover:text-white transition-colors">Return Policy</Link></li>
                         </ul>

@@ -14,40 +14,29 @@ const About = () => {
             {/* Header Banner */}
             <div className="bg-gray-900 text-white py-20 px-4">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-6">About Sky Arc Computers</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold mb-6">About Us</h1>
                     <p className="text-xl text-gray-300">
-                        Simplifying your digital life with premium technology and exceptional service.
+                        Welcome to Sky Arc Computer Foundation.
                     </p>
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 {/* Main Content */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
-                    <div>
-                        <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
-                        <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                            At Sky Arc Computers, we believe that premium technology should be accessible to everyone.
-                            Our mission is to bridge the gap between innovation and consumers by providing
-                            high-quality electronics with a focus on convenience and trust.
-                        </p>
-                        <p className="text-gray-600 text-lg leading-relaxed">
-                            We are not just a store; we are technology enthusiasts passionate about bringing
-                            the best gadgets to your doorstep. From the latest wearables to professional
-                            photography gear, we curate our collection to ensure excellence.
-                        </p>
-                    </div>
-                    <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl">
-                        <img
-                            src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80"
-                            alt="Team at work"
-                            className="w-full h-full object-cover"
-                        />
-                    </div>
+                <div className="prose prose-green max-w-none text-gray-600 space-y-6">
+                    <p className="text-lg leading-relaxed">
+                        Sky Arc Computer Foundation is a trusted IT trading and technology solutions company based in Al Khobar, Saudi Arabia since 2020. We specialize in providing high-quality computers, servers, networking equipment, CCTV systems, firewalls, smart automation solutions, and complete IT infrastructure services.
+                    </p>
+                    <p className="text-lg leading-relaxed">
+                        Since our establishment, we have been committed to delivering reliable technology products and professional IT services to businesses, organizations, and individual customers across the Kingdom of Saudi Arabia.
+                    </p>
+                    <p className="text-lg leading-relaxed">
+                        We, through vision, always strive with determination and commitment to meet all of the unique demands of our customers of all categories and assist and provide them with both advanced and modern technology at very competitive prices we also are committed to meeting their needs & desires with the highest performance of all technology solutions to keep pace with the future.
+                    </p>
                 </div>
 
-                {/* Values Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* Values Grid - Kept but adjusted for layout */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
                     <div className="bg-white/80 backdrop-blur p-8 rounded-2xl text-center shadow-lg border border-white/50 hover:-translate-y-2 transition-transform duration-300">
                         <div className="w-20 h-20 bg-gradient-to-br from-green-100 to-emerald-50 rounded-full flex items-center justify-center text-green-600 mx-auto mb-6 shadow-inner">
                             <FaShippingFast size={32} />
